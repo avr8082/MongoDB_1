@@ -1,0 +1,61 @@
+****************************************************************** MongoDB ******************************************************************************************
+# Install the MongoDB 
+# Start mongoDB Server from command prompt-->MongoD ENTER - Terminal 1
+# Start mongo shell from another command prompt by typing mongo - Terminal 2
+
+CRUD = Create Read Update Delete --> This is basic data operating working with MongoDB 
+
+# In MongoDB, documents are stored in collections. Collections are organized into databases.
+# database --> collections --> documents 
+# namespace = db.collections
+# to get the help 
+> help 
+
+> show dbs
+> show collections
+
+# Mongo Shell is fully functional client application 
+# Collection & database form a namespace 
+# when doing operation with CRUD, we always deal with global variable called db.This variable holds reference to database
+# DB is global variable 
+
+> use video 
+
+# to insert the documents into db.video
+> db.video.insertOne({"title":"Jaws", "year": 1975, "imdb":"tt001"})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("5802c90bbb24337295f91a85")
+
+
+# In MongoDB, all documents must have underscore ID field(for ex: "_id" : ObjectId("5802c90bbb24337295f91a85"). If NO underscore ID field specified, MongoDB will add underscore ID field to the document. This is additional value type supported by BSON
+# MongoDB assigns a unique object ID as a underscore ID. Each document in the collection must have a unique ID value
+
+# to read the documents from db.video
+> db.video.find()
+> db.video.find().pretty()
+> db.video.find({}).pretty() # all documents will list out with this if we dont specify any parameters
+> db.video.find({"title":"Jaws"}).pretty() # to query by title 
+> db.video.find({"year":2000}).pretty() # to query by year
+
+# A shell is fully functional java script interpretor. We can variable for the query 
+# the return value of find is not simply an array of documents.Its instead a cursor object.Assign return value of find to a variable in mongo shell. The shell is fully functional java script interpreter.
+
+> var c = db.video.find() 
+# we can hasNext() for the cursor object
+> c.hasNext() # returns true 
+> c.next() # returns 
+# next document of the cursor 
+
+# to clear mongo shell screen use Ctrl+l 
+
+************ Install Python 2.7.9 ****************************
+# 1. download Python 2.7.9 and install THEN reboot the laptop
+# 2. Change the environment variable PATH = C:\Python27\
+# 3. Bring up the command prompt and type python c:\> python 
+>>> print "Hello World" # Hello World #python installed and working properyl
+# check PIP  
+c:\>pip 
+# it should show pip commands. If PIP didn't work, check the PATH environment variable and add C:\Python27\Scripts 
+
+
